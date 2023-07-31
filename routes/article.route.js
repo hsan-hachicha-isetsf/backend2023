@@ -97,6 +97,14 @@ router.delete('/:articleId', async (req, res)=> {
     }   
 });
 
-
+router.get('/scat/:scategorieID',async(req, res)=>{
+    try {
+        const art = await Article.find({ scategorieID: req.params.scategorieID}).exec();
+       
+        res.status(200).json(art);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+});
 
 module.exports = router;

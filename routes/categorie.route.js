@@ -19,9 +19,6 @@ router.get('/', async (req, res, )=> {
 router.post('/',verifyToken,authorizeRoles("admin"), async (req, res) =>  {
     const { nomcategorie, imagecategorie} = req.body;
     
-    
-
-    
       const newCategorie = new Categorie({nomcategorie:nomcategorie, imagecategorie:imagecategorie})
     try {
 
