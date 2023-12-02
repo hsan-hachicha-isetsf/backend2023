@@ -94,7 +94,7 @@ var mailOption ={
                    if (isCorrectPassword) {
             
                             delete user._doc.password
-                            if (!user.isActive) return res.status(200).send({ success: false, message: 'Your account is inactive, Please contact your administrator' })
+                            if (!user.isActive) return res.status(404).send({ success: false, message: 'Your account is inactive, Please contact your administrator' })
             
                             const token = generateAccessToken(user);
                             const refreshToken = generateRefreshToken(user);

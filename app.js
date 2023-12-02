@@ -1,6 +1,7 @@
 const express=require('express');
 const mongoose =require("mongoose")
 const dotenv =require('dotenv')
+const compression = require('compression');
 const cors=require('cors')
 const categorieRouter =require("./routes/categorie.route")
 const scategorieRouter =require("./routes/scategorie.route")
@@ -12,9 +13,10 @@ const app = express();
 //BodyParser Middleware
 app.use(express.json());
 app.use(cors())
+app.use(compression())
 mongoose.set("strictQuery", false);
 // Connexion à la base données
-mongoose.connect(process.env.DATABASECLOUD,{
+mongoose.connect(process.env.DATABASE,{
 useNewUrlParser: true,
 useUnifiedTopology: true
 })

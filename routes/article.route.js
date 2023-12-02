@@ -50,10 +50,10 @@ router.post('/', async (req, res) =>  {
 
  const nouvarticle = new Article(req.body)
     try {
-        const response =await nouvarticle.save();
-        const articles = await Article.findById(response._id).populate("scategorieID").exec();
+       await nouvarticle.save();
+       
         
-        res.status(200).json(articles);
+        res.status(200).json(nouvarticle);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
